@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LOGIN</title>
+        <link rel="stylesheet" href="/css/login.css">
+    </head>
+
+    <body>
+        <div>
+            <form action="/canLogin" method="post">
+            <label class="loginLAB" for="login">Login</label> <br>
+            <input class="inputs" type="text" name="login" id="login" placeholder="Mike123"> <br> <br>
+            
+            <label class="passLAB" for="password">Password</label> <br>
+            <input class="inputs" type="password" name="password" id="password" placeholder="make me strong"> <br> <br>
+            
+            <input class="sub" type="submit" value="Login">
+            </form>
+            <input class="sub" type="submit" value="Register" formaction="/register" formmethod="get">
+        </div>
+    </body>
+</html>

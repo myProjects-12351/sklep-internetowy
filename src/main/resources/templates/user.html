@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil użytkownika</title>
+    <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+    <header>
+        <h1>Witaj, <span th:text="${user.login}">Użytkownik</span>!</h1>
+        <nav>
+            <ul>
+                <li><a href="/index">Strona główna</a></li>
+                <li><a href="/logout">Wyloguj</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="user-info">
+            <h2>Informacje o użytkowniku</h2>
+            <p><strong>Login:</strong> <span th:text="${user.login}">login</span></p>
+            <p><strong>Email:</strong> <span th:text="${user.email}">email@example.com</span></p>
+            <p><strong>Numer telefonu:</strong> <span th:text="${user.phone}">123456789</span></p>
+            <!-- <p><strong>Hasło:</strong> <span th:text="${user.password}">******</span></p> -->
+        </section>
+
+        <section class="product-management">
+            <h2>Moje produkty</h2>
+
+            <form action="/addProduct" method="get">
+                <button type="submit">Dodaj nowy produkt</button>
+            </form>
+
+            <h3>Lista Twoich produktów</h3>
+            <ul>
+                <li th:each="product : ${products}">
+                    <div class="product">
+                        <h4 th:text="${product.name}">Nazwa produktu</h4>
+                        <p><strong>Cena:</strong> <span th:text="${product.price}">100 zł</span></p>
+                        <p><strong>Opis:</strong> <span th:text="${product.description}">Opis produktu</span></p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024</p>
+    </footer>
+</body>
+</html>

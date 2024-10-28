@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>REGISTER</title>
+        <link rel="stylesheet" href="/css/login.css">
+    </head>
+
+    <body>
+        <div>
+            <form action="/canRegister" method="post">
+            <label class="loginLAB" for="login">Login</label> <br>
+            <input class="inputs" type="text" name="login" id="login" placeholder="Mike123" required> <br> <br>
+            
+            <label class="passLAB" for="password">Password</label> <br>
+            <input class="inputs" type="password" name="password" id="password" placeholder="make me strong" required> <br> <br>
+            
+            <label class="passLAB" for="rpassword">Repeat password</label> <br>
+            <input class="inputs" type="password" name="rpassword" id="rpassword" placeholder="repeat me" required> <br> <br>
+
+            <label class="passLAB" for="email">Email</label> <br>
+            <input class="inputs" type="email" name="email" id="email" placeholder="example@gmail.com" required> <br> <br>
+           
+            <label class="passLAB" for="phone">Phone</label> <br>
+            <input class="inputs" type="text" name="phone" id="phone" placeholder="+48 123 456 789" required> <br> <br>
+           
+            <input class="sub" type="submit" value="Register">
+            </form>
+
+            <input class="sub" type="submit" value="Login" formaction="/login" formmethod="get">
+
+        </div>
+    </body>
+</html>

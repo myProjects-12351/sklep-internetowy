@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodaj Produkt</title>
+    <link rel="stylesheet" href="/css/addProduct.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/images/logo1.png" height="50px" width="150px" alt="logo">
+      <a href="/user"><img src="/images/people.png" height="50px"></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="add-product-form">
+      <h1>Dodaj Nowy Produkt</h1>
+      <form action="/saveProduct" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="name">Nazwa Produktu:</label>
+          <input type="text" id="name" name="name" placeholder="Wprowadź nazwę produktu" required>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Opis Produktu:</label>
+          <textarea id="description" name="description" placeholder="Wprowadź opis produktu" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="price">Cena (PLN):</label>
+          <input type="number" id="price" name="price" placeholder="Wprowadź cenę produktu" required min="0" step="0.01">
+        </div>
+
+        <div class="form-group">
+          <label for="image">Dodaj Zdjęcie:</label>
+          <input type="file" id="image" name="image" accept="image/*">
+        </div>
+
+        <div class="form-group">
+            <label for="amount">Podaj ilosć:</label>
+            <input type="number" id="amount" name="amount" placeholder="Wprowadź ilość dostępnego produktu" required>
+        </div>
+
+        <div class="form-group">
+          <button type="submit">Dodaj Produkt</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2024 Twoja Strona. Wszelkie prawa zastrzeżone.</p>
+  </footer>
+</body>
+</html>

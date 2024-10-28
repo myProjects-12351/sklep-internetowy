@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produkt - ${product.name}</title>
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+    <header>
+<!--        <div class="logo">-->
+<!--            <a href="/"><img src="/images/logo1.png" alt="Logo"></a>-->
+<!--        </div>-->
+<!--        <form action="/search" method="get">-->
+<!--            <input type="text" name="query" placeholder="Szukaj...">-->
+<!--            <select name="category">-->
+<!--                <option value="">Wszystkie kategorie</option>-->
+<!--            </select>-->
+<!--            <input type="submit" value="Szukaj">-->
+<!--        </form>-->
+<!--        <div class="icons">-->
+<!--            <input type="image" src="/images/cart1.png" alt="Koszyk" onclick="window.location.href='/cart'">-->
+<!--            <input type="image" src="/images/people.png" alt="Profil" onclick="window.location.href='/user'">-->
+<!--        </div>-->
+        <form action="index.html">
+            <div class="logo">
+                <img src="/images/logo1.png" height="50px" width="150px" alt="logo">
+            </div>
+            <input type="text" placeholder="search" name="search-text" class="searchINP"/>
+            <select name="category">
+                <option value="catAll">Wszystko</option>
+                <option value="cat1">KATEGORIA1</option>
+                <option value="cat2">KATEGORIA2</option>
+                <option value="cat3">KATEGORIA3</option>
+            </select>
+            <input type="submit" value="SEARCH" class="search" formaction="/search" formmethod="get">
+
+            <input type="image" src="/images/people.png" formaction="/user" formmethod="get">
+            <input type="image" src="/images/cart1.png" formaction="/cart" formmethod="get">
+            <input type="image" src="/images/like1.png" formaction="/like" formmethod="get">
+            <input type="image" src="/images/chat3.png" formaction="/chat" formmethod="get">
+            <input type="image" src="/images/setting1.png" formaction="/settings" formmethod="get">
+        </form>
+
+    </header>
+
+    <main>
+        <section class="product-details">
+            <div class="product-images">
+                <div class="main-image">
+                    <img th:src="@{${product.imagePath}}" alt="Zdjęcie produktu">
+                </div>
+                <div class="thumbnails">
+                    <img th:each="imagePath : ${product.imagePaths}" th:src="@{${imagePath}}" alt="Miniaturka produktu">
+                </div>
+            </div>
+            <div class="product-info">
+                <h1 th:text="${product.name}">Nazwa produktu</h1>
+                <p class="price" th:text="${product.price} + ' zł'">Cena</p>
+                <p class="description" th:text="${product.description}">Opis</p>
+                <p class="date-info">
+                    Dodano: <span th:text="${#dates.format(product.creation_date, 'dd.MM.yyyy')}"></span>
+                    <br>
+                    Ostatnia modyfikacja: <span th:text="${#dates.format(product.modification_date, 'dd.MM.yyyy')}"></span>
+                </p>
+            </div>
+            <div class="buy-section">
+                <p class="price-buy" th:text="${product.price} + ' zł'">Cena</p>
+                <a th:href="@{${product.productUrl}}" class="btn-buy">Kup teraz</a>
+                <!-- Form to add item to cart -->
+                <form th:action="@{/cart/add-item}" method="post">
+                    <input type="hidden" name="product_id" th:value="${product.product_id}">
+                    <input type="submit" value="Dodaj do koszyka" class="btn-add-to-cart">
+                </form>
+            </div>
+        </section>
+
+        <section class="reviews">
+            <h2>Opinie</h2>
+            <!-- <div class="stars">
+                <span th:text="${product.stars}"></span> ★
+            </div> -->
+            <ul class="comments">
+                <li th:each="comment : ${comments}">
+                    <div class="comment">
+                        <p class="comment-author" th:text="${comment.author}">Autor</p>
+                        <p class="comment-text" th:text="${comment.text}">Komentarz</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="comment-form">
+                <h3>Dodaj komentarz</h3>
+                <form th:action="@{/product/{id}/add-comment(id=${product.product_id})}" method="post">
+                    <label for="comment">Komentarz:</label>
+                    <textarea id="comment" name="comment" rows="4" required></textarea>
+                    <input type="submit" value="Dodaj komentarz">
+                </form>                
+            </div>
+        </section>
+    </main>
+</body>
+</html>

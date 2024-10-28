@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin: 0px;
+}
+
+div {
+    background:linear-gradient(#415a77 , #0d1b2a) ;
+    box-shadow: 0px 0px 200px 50px #1b263b;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+div * {
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 5px;
+    margin: 1px;
+}
+
+.inputs:hover {
+    background-color: #e0e1dd;
+}
+
+.inputs {
+    height: 50px;
+    width: 400px;
+    border: 0px;
+}
+
+.sub {
+    height: 30px;
+    width: 400px;
+    background-color: #0d1b2a;
+    border: 0cqb;
+    color: white;
+}
+
+.sub:hover {
+    background-color: #1b263b;
+}

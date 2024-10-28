@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Start</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/index.js"></script>
+</head>
+<body>
+  <header>    
+    <form action="index.html">
+      <div class="logo">
+        <img src="/images/logo1.png" height="50px" width="150px" alt="logo">
+      </div>
+      <input type="text" placeholder="search" name="search-text" class="searchINP"/> 
+      <select name="category">
+        <option value="catAll">Wszystko</option>
+        <option value="cat1">KATEGORIA1</option>
+        <option value="cat2">KATEGORIA2</option>
+        <option value="cat3">KATEGORIA3</option>
+      </select>
+      <input type="submit" value="SEARCH" class="search" formaction="/search" formmethod="get">
+      
+      <input type="image" src="/images/people.png" formaction="/user" formmethod="get">
+      <input type="image" src="/images/cart1.png" formaction="/cart" formmethod="get">
+      <input type="image" src="/images/like1.png" formaction="/like" formmethod="get">
+      <input type="image" src="/images/chat3.png" formaction="/chat" formmethod="get">
+      <input type="image" src="/images/setting1.png" formaction="/settings" formmethod="get">
+    </form>
+  </header>
+
+  <main>
+    <aside>
+      <h3>FILTRY</h3>
+      <form action="/index/filtruj">
+        <strong>Cena:</strong> <br>
+        <input type="radio" name="price" id="price100" value="100">
+        <label for="price100">< 100 zł</label> <br>
+        <input type="radio" name="price" id="price250" value="250">
+        <label for="price250">< 250 zł</label> <br>
+        <input type="radio" name="price" id="price500" value="500">
+        <label for="price500">< 500 zł</label> <br>
+        <input type="radio" name="price" id="price750" value="750">
+        <label for="price750">< 750 zł</label> <br>
+        <input type="radio" name="price" id="price1000" value="1000">
+        <label for="price1000">< 1000 zł</label> <br>
+        <input type="radio" name="price" id="priceun" value="100000000">
+        <label for="priceun">bez limitu zł</label> <br>
+        <!-- <input type="radio" name="price" id="pricerange1" value="range">
+        <label for="pricerange1">Zakres cenowy: </label> <br>
+        <input type="number" placeholder="MIN" class="pricerange" value="MIN" name="MIN" min="0"> -
+        <input type="number" placeholder="MAX" class="pricerange" value="MAX" name="MAX" min="0"> <br> <br> -->
+  
+        <br><br>
+        <strong>Stan:</strong> <br>
+        <input type="checkbox" name="Stan" id="nowe" value="nowe">
+        <label for="nowe">nowe</label> <br>
+        <input type="checkbox" name="Stan" id="uzywane" value="uzywane">
+        <label for="uzywane">używane</label> <br>
+        <input type="checkbox" name="Stan" id="uszkodzone" value="uszkodzone">
+        <label for="uszkodzone">uszkodzone</label> <br>
+        <input type="checkbox" name="Stan" id="po-zwrocie" value="po-zwrocie">
+        <label for="po-zwrocie">po zwrocie</label> <br>
+  
+        <br> <input type="submit" value="FILTRUJ" class="FILTRUJbutton">
+      </form>
+    </aside>
+
+    <section>
+      <div class="sorting-options">
+        <form action="index.html" method="get" class="sorting-form">
+          <label for="sort" class="sort-label">Sortuj według:</label>
+          <select name="sort" id="sort" class="sort-select">
+            <option value="price-asc">Cena: rosnąco</option>
+            <option value="price-desc">Cena: malejąco</option>
+            <option value="name-asc">Nazwa: A-Z</option>
+            <option value="name-desc">Nazwa: Z-A</option>
+          </select>
+          <input type="submit" value="SORTUJ" class="sort-button">
+        </form>
+      </div>
+
+
+      <ul class="itemLi">
+        <li th:each="item : ${items}" class="itemOb">
+          <a th:href="@{/products/{id}(id=${item.product_id})}">
+            <img th:src="${item.imagePath}">
+          </a>
+          <div>
+            <p><strong><span class="name" th:text="${item.name}"></span></strong></p>
+            <p>Opis: <span th:text="${item.description}"></span></p>
+            <p>Ilość: <span th:text="${item.amount}"></span></p>
+            <p>Cena: <span class="price" th:text="${item.price}"></span> PLN</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <article>
+      <a href="https://example.com/page1" class="image-link">
+        <img class="random-image" alt="Losowy obraz 1">
+    </a>
+    <a href="https://example.com/page2" class="image-link">
+        <img class="random-image" alt="Losowy obraz 2">
+    </a>
+    <a href="https://example.com/page3" class="image-link">
+        <img class="random-image" alt="Losowy obraz 3">
+    </a>
+    <a href="https://example.com/page4" class="image-link">
+        <img class="random-image" alt="Losowy obraz 4">
+    </a>
+    <a href="https://example.com/page5" class="image-link">
+        <img class="random-image" alt="Losowy obraz 5">
+    </a>
+    </article>
+  </main>
+
+</body>
+</html>
